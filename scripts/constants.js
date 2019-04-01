@@ -1,0 +1,3 @@
+let GAME_WIDTH = 700
+let GAME_HEIGHT = 700
+let MOVE = 5
