@@ -1,11 +1,12 @@
 class Savior {
     constructor() {
-        this.saviorY = 600
-        this.saviorX = 100
+        this.saviorX = 50
+        this.saviorY = 40
     }
 
     draw() {
         fill('rgba(240,243,46, 0.80)')
+        noStroke()
         // rect(this.saviorX, this.saviorY, 55, 55, 0, 40, 65, 50)
         triangle(
             this.saviorX + 40,
@@ -15,6 +16,7 @@ class Savior {
             this.saviorX + 96,
             this.saviorY + 85
         )
+        arc(this.saviorX + 68, this.saviorY + 85, 56, 56, 0, PI)
 
         // beginShape(TRIANGLES)
         // vertex(this.saviorX + 60, this.saviorY + 20)
@@ -32,18 +34,6 @@ class Savior {
         } else if (this.saviorX < GAME_WIDTH * 0.02) {
             this.saviorX = GAME_WIDTH * 0.03
         }
-
-        //Check collision Giraffe
-        // if (
-        //     this.saviorX > game.animal.giraffeX - 60 &&
-        //     this.saviorX < game.animal.giraffeX + 45 &&
-        //     this.saviorY > game.animal.giraffeY - 65 &&
-        //     this.saviorY < game.animal.giraffeY + 100
-        // ) {
-        //     MOVE = MOVE * -1.5
-        // } else {
-        //     MOVE = 5
-        // }
 
         //Savior moves with arrow keys
         if (keyIsDown(LEFT_ARROW)) {
