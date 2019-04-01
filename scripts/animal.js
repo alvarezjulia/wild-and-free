@@ -1,14 +1,22 @@
 class Animal {
     constructor() {
-        this.rect2x = 200
-        this.rect2y = 120
+        this.giraffeX = 200
+        this.giraffeY = 120
+        this.hippoX = 400
+        this.hippoY = 400
     }
     setup() {
-        this.img = loadImage('./../assets/Giraffe.JPG')
+        this.giraffeImg = loadImage('./../assets/Giraffe.JPG')
+        this.hippoImg = loadImage('./../assets/Hippo.jpg')
     }
     draw() {
-        // fill(50, 140, 20)
-        // rect(this.rect2x, this.rect2y, 30, 80)
-        image(this.img, this.rect2x, this.rect2y, this.img.width / 2, this.img.height / 2)
+        image(
+            this.giraffeImg,
+            this.giraffeX,
+            this.giraffeY,
+            this.giraffeImg.width / 2,
+            this.giraffeImg.height / 2
+        )
+        image(this.hippoImg, this.hippoX, this.hippoY, this.hippoImg.width / 9, this.hippoImg.height / 9)
     }
 }

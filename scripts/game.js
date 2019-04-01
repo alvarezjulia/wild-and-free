@@ -6,11 +6,11 @@ class Game {
 
     setup() {
         createCanvas(GAME_WIDTH, GAME_HEIGHT)
-        background(80, 180, 60)
         this.animal.setup()
     }
 
     draw() {
+        background(80, 180, 60)
         this.animal.draw()
         this.savior.draw()
     }

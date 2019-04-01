@@ -1,30 +1,30 @@
 class Savior {
     constructor() {
-        this.rect1y = 30
-        this.rect1x = 30
+        this.saviorY = 600
+        this.saviorX = 100
     }
 
     draw() {
         fill(0)
-        rect(this.rect1x, this.rect1y, 55, 55, 0, 40, 65, 50)
+        rect(this.saviorX, this.saviorY, 55, 55, 0, 40, 65, 50)
 
         //Set canvas boundaries
-        if (this.rect1x >= 600) {
-            this.rect1x = 590
-        } else if (this.rect1y >= 600) {
-            this.rect1y = 590
-        } else if (this.rect1y < 30) {
-            this.rect1y = 30
-        } else if (this.rect1x < 30) {
-            this.rect1x = 30
+        if (this.saviorX >= GAME_WIDTH * 0.9) {
+            this.saviorX = GAME_WIDTH * 0.89
+        } else if (this.saviorY >= GAME_HEIGHT * 0.9) {
+            this.saviorY = GAME_HEIGHT * 0.89
+        } else if (this.saviorY < GAME_HEIGHT * 0.02) {
+            this.saviorY = GAME_HEIGHT * 0.03
+        } else if (this.saviorX < GAME_WIDTH * 0.02) {
+            this.saviorX = GAME_WIDTH * 0.03
         }
 
-        //Check collision
+        //Check collision Giraffe
         if (
-            this.rect1x > game.animal.rect2x - 60 &&
-            this.rect1x < game.animal.rect2x + 35 &&
-            this.rect1y > game.animal.rect2y - 60 &&
-            this.rect1y < game.animal.rect2y + 85
+            this.saviorX > game.animal.giraffeX - 60 &&
+            this.saviorX < game.animal.giraffeX + 45 &&
+            this.saviorY > game.animal.giraffeY - 65 &&
+            this.saviorY < game.animal.giraffeY + 100
         ) {
             MOVE = MOVE * -1.5
         } else {
@@ -33,19 +33,19 @@ class Savior {
 
         //Savior moves with arrow keys
         if (keyIsDown(LEFT_ARROW)) {
-            this.rect1x -= MOVE
+            this.saviorX -= MOVE
         }
 
         if (keyIsDown(RIGHT_ARROW)) {
-            this.rect1x += MOVE
+            this.saviorX += MOVE
         }
 
         if (keyIsDown(UP_ARROW)) {
-            this.rect1y -= MOVE
+            this.saviorY -= MOVE
         }
 
         if (keyIsDown(DOWN_ARROW)) {
-            this.rect1y += MOVE
+            this.saviorY += MOVE
         }
     }
 }
