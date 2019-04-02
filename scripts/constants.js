@@ -18,5 +18,21 @@ let ANIMALS = [
         imgUrl: './../assets/Hippo.jpg',
         widthSize: 9,
         heightSize: 9
+    },
+    {
+        name: 'zebra',
+        posX: 500,
+        posY: 80,
+        imgUrl: './../assets/Zebra.jpg',
+        widthSize: 4,
+        heightSize: 4
+    },
+    {
+        name: 'elephant',
+        posX: 100,
+        posY: 450,
+        imgUrl: './../assets/Elephant.jpg',
+        widthSize: 4,
+        heightSize: 4
     }
 ]

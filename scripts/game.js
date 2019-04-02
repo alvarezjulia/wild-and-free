@@ -1,3 +1,4 @@
+let bg
 class Game {
     constructor() {
         this.savior = new Savior()
@@ -16,13 +17,15 @@ class Game {
     }
 
     setup() {
+        bg = loadImage('./../assets/Background.jpg')
         createCanvas(GAME_WIDTH, GAME_HEIGHT)
         this.animal.forEach(el => el.setup())
         this.poacher.setup()
     }
 
     draw() {
-        background(80, 180, 60)
+        // background(80, 180, 60)
+        background(bg)
         this.animal.forEach(el => el.draw())
         this.savior.draw()
         this.poacher.draw()

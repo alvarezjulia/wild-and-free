@@ -9,19 +9,17 @@ class Savior {
         fill('rgba(240,243,46, 0.80)')
         noStroke()
         push()
-
         translate(this.saviorX, this.saviorY)
         rotate(this.angle)
-
         triangle(-28, 75, 0, 0, 28, 75)
         arc(0, 75, 56, 56, 0, PI)
         pop()
 
         //Set canvas boundaries
-        if (this.saviorX >= GAME_WIDTH * 0.9) {
-            this.saviorX = GAME_WIDTH * 0.89
-        } else if (this.saviorY >= GAME_HEIGHT * 0.9) {
-            this.saviorY = GAME_HEIGHT * 0.89
+        if (this.saviorX >= GAME_WIDTH * 0.96) {
+            this.saviorX = GAME_WIDTH * 0.95
+        } else if (this.saviorY >= GAME_HEIGHT * 0.96) {
+            this.saviorY = GAME_HEIGHT * 0.95
         } else if (this.saviorY < GAME_HEIGHT * 0.02) {
             this.saviorY = GAME_HEIGHT * 0.03
         } else if (this.saviorX < GAME_WIDTH * 0.02) {
