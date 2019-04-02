@@ -1,7 +1,7 @@
 class Savior {
     constructor() {
-        this.saviorX = 50
-        this.saviorY = 40
+        this.saviorX = 200
+        this.saviorY = 500
         this.angle = 0
     }
 
@@ -13,8 +13,8 @@ class Savior {
         translate(this.saviorX, this.saviorY)
         rotate(this.angle)
 
-        triangle(40 - 68, 85 - 30, 0, 0, 96 - 68, 85 - 30)
-        // arc(this.saviorX, this.saviorY, 56, 56, 0, PI)
+        triangle(-28, 75, 0, 0, 28, 75)
+        arc(0, 75, 56, 56, 0, PI)
         pop()
 
         //Set canvas boundaries

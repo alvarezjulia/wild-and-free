@@ -12,8 +12,8 @@ class Poacher {
             this.poacherImg,
             this.posX,
             this.posY,
-            this.poacherImg.width / 8,
-            this.poacherImg.height / 8
+            this.poacherImg.width / 10,
+            this.poacherImg.height / 10
         )
     }
 }
