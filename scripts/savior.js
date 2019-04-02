@@ -8,27 +8,14 @@ class Savior {
     draw() {
         fill('rgba(240,243,46, 0.80)')
         noStroke()
-        // push()
-        translate(this.saviorX, this.saviorY)
-        angleMode(DEGREES)
-        rotate(this.angle)
-        // rect(this.saviorX, this.saviorY, 55, 55, 0, 40, 65, 50)
-        triangle(
-            this.saviorX + 40 - 68,
-            this.saviorY + 85 - 30,
-            0,
-            0,
-            (this.brightX = this.saviorX + 96 - 68),
-            this.saviorY + 85 - 30
-        )
-        // arc(this.saviorX, this.saviorY, 56, 56, 0, PI)
-        // pop()
+        push()
 
-        // beginShape(TRIANGLES)
-        // vertex(this.saviorX + 60, this.saviorY + 20)
-        // vertex(this.saviorX + 70, this.saviorY + 75)
-        // vertex(this.saviorX + 80, this.saviorY + 20)
-        // endShape()
+        translate(this.saviorX, this.saviorY)
+        rotate(this.angle)
+
+        triangle(40 - 68, 85 - 30, 0, 0, 96 - 68, 85 - 30)
+        // arc(this.saviorX, this.saviorY, 56, 56, 0, PI)
+        pop()
 
         //Set canvas boundaries
         if (this.saviorX >= GAME_WIDTH * 0.9) {
@@ -43,19 +30,21 @@ class Savior {
 
         //Savior moves with arrow keys
         if (keyIsDown(LEFT_ARROW)) {
-            this.angle += 5
+            this.angle -= 10 / (180 * PI)
         }
 
         if (keyIsDown(RIGHT_ARROW)) {
-            this.angle -= 5
+            this.angle += 10 / (180 * PI)
         }
 
         if (keyIsDown(UP_ARROW)) {
-            this.saviorY -= MOVE
+            this.saviorY += MOVE * Math.cos(this.angle)
+            this.saviorX += -MOVE * Math.sin(this.angle)
         }
 
         if (keyIsDown(DOWN_ARROW)) {
-            this.saviorY += MOVE
+            this.saviorY -= MOVE * Math.cos(this.angle)
+            this.saviorX -= -MOVE * Math.sin(this.angle)
         }
     }
 }
