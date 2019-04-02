@@ -10,13 +10,6 @@ class Animal {
     }
     setup() {
         this.animalImg = loadImage(this.imgUrl)
-
-        //PLAY P5
-        // let animal = createSprite(this.posX, this.posY)
-        // animal.addImage(this.animalImg)
-        // animal.scale = 1/this.widthSize
-        // animal.width = animal.width/this.widthSize
-        // animal.height/this.heightSize
     }
     draw() {
         image(
@@ -27,15 +20,7 @@ class Animal {
             this.animalImg.height / this.heightSize
         )
         // this.saviorCollision()
-        //PLAY P5
-        // drawSprites();
     }
-    //PLAY P5
-    // checkSaviorCollision() {
-    //     if (animal.overlap(game.savior.triangle)) {
-    //         console.log('Hello')
-    //     }
-    // }
     // saviorCollision() {
     //     'game.savior.posX: ',game.savior.posX
     //     'this.posX: ', this.posX
