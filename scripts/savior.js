@@ -2,7 +2,9 @@ class Savior {
     constructor() {
         this.saviorX = 200
         this.saviorY = 500
+        this.height = 131
         this.angle = 0
+        this.width = 56
     }
 
     draw() {
@@ -28,11 +30,11 @@ class Savior {
 
         //Savior moves with arrow keys
         if (keyIsDown(LEFT_ARROW)) {
-            this.angle -= 10 / (180 * PI)
+            this.angle -= 15 / (180 * PI)
         }
 
         if (keyIsDown(RIGHT_ARROW)) {
-            this.angle += 10 / (180 * PI)
+            this.angle += 15 / (180 * PI)
         }
 
         if (keyIsDown(UP_ARROW)) {
