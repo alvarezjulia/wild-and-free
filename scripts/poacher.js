@@ -69,6 +69,7 @@ class Poacher {
             )
         ) {
             this.inJail = true
+            transparency = 0
         }
     }
 }

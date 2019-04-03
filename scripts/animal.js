@@ -20,6 +20,24 @@ class Animal {
             this.animalImg.width / this.sizeScale,
             this.animalImg.height / this.sizeScale
         )
+        this.setWidthAndHeight()
+
+        //Savior with animal collision
+        if (
+            collidePointRect(
+                game.savior.saviorX,
+                game.savior.saviorY,
+                this.posX,
+                this.posY,
+                this.width,
+                this.height
+            )
+        ) {
+            // let playerX = game.savior.saviorX
+            // let playerY = game.savior.saviorY
+            // game.savior.saviorX = playerX
+            // game.savior.saviorY = playerY
+        }
 
         //Poacher with animal collision
         //& poacher not in jail
@@ -41,7 +59,6 @@ class Animal {
             }
         }
 
-        this.setWidthAndHeight()
         this.aniamlBood()
     }
     setWidthAndHeight() {
@@ -50,13 +67,16 @@ class Animal {
     }
     aniamlBood() {
         if (this.dead === true) {
+            push()
             fill('rgba(255,0,0, 0.3)')
+            noStroke()
             ellipse(
                 this.posX + this.width / 2,
                 this.posY + this.height / 2,
                 this.width + 20,
                 this.height + 20
             )
+            pop()
         }
     }
 }

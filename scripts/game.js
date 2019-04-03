@@ -3,7 +3,7 @@ class Game {
     constructor() {
         this.savior = new Savior()
         this.animal = []
-        this.poacherArr = Array.from({ length: 5 }).map(x => new Poacher())
+        this.poacherArr = Array.from({ length: 20 }).map(x => new Poacher())
         this.arrInJail
         this.arrDeadAnimal
     }
@@ -24,12 +24,17 @@ class Game {
     draw() {
         background(bg)
         this.animal.forEach(el => el.draw())
-        this.savior.draw()
         this.poacherArr.forEach(el => el.draw())
 
         this.arrInJail = game.poacherArr.filter(el => el.inJail)
 
         this.arrDeadAnimal = game.animal.filter(el => el.dead)
+
+        fill(0, transparency)
+        rect(0, 0, GAME_WIDTH, GAME_HEIGHT)
+        transparency = (transparency + 1.5) % maxTransparency
+
+        this.savior.draw()
 
         this.setScore()
         this.setDeadCounter()

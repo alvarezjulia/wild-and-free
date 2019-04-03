@@ -8,9 +8,9 @@ class Savior {
     }
 
     draw() {
+        push()
         fill('rgba(240,243,46, 0.80)')
         noStroke()
-        push()
         translate(this.saviorX, this.saviorY)
         rotate(this.angle)
         triangle(-28, 75, 0, 0, 28, 75)
