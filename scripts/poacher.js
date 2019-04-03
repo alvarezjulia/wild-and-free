@@ -17,6 +17,11 @@ class Poacher {
             this.poacherImg.width / 10,
             this.poacherImg.height / 10
         )
+        this.setWidthAndHeight()
+    }
+    setWidthAndHeight() {
+        this.width = this.poacherImg.width / 10
+        this.height = this.poacherImg.height / 10
     }
 
     startPathing() {

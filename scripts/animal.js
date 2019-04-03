@@ -1,12 +1,12 @@
 class Animal {
-    constructor(animal, posX, posY, imgUrl, widthSize, heightSize) {
+    constructor(animal, posX, posY, imgUrl, sizeScale) {
         this.animal = animal
         this.posX = posX
         this.posY = posY
         this.imgUrl = imgUrl
-        this.widthSize = widthSize
-        this.heightSize = heightSize
+        this.sizeScale = sizeScale
         this.animalImg
+        this.dead = false
     }
     setup() {
         this.animalImg = loadImage(this.imgUrl)
@@ -16,17 +16,29 @@ class Animal {
             this.animalImg,
             this.posX,
             this.posY,
-            this.animalImg.width / this.widthSize,
-            this.animalImg.height / this.heightSize
+            this.animalImg.width / this.sizeScale,
+            this.animalImg.height / this.sizeScale
         )
-        // this.saviorCollision()
+        this.setWidthAndHeight()
+
+        if (
+            collideRectRect(
+                this.posX,
+                this.posY,
+                this.width,
+                this.height,
+                game.poacher.posX,
+                game.poacher.posY,
+                game.poacher.width,
+                game.poacher.height
+            )
+        ) {
+            this.dead = true
+            console.log(this.dead)
+        }
     }
-    // saviorCollision() {
-    //     'game.savior.posX: ',game.savior.posX
-    //     'this.posX: ', this.posX
-    //     if(game.savior.saviorX > this.posX && game.savior.saviorX < this.posX+(this.animalImg.width / this.widthSize) && game.savior.saviorY>this.posY&& game.savior.saviorY<this.posY+(this.animalImg.height / this.heightSize)){
-    //         MOVE = MOVE * -1.5
-    //         console.log('Hello')
-    //     }     
-    // } 
+    setWidthAndHeight() {
+        this.width = this.animalImg.width / this.sizeScale
+        this.height = this.animalImg.height / this.sizeScale
+    }
 }
