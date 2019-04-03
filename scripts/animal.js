@@ -1,6 +1,6 @@
 class Animal {
-    constructor(animal, posX, posY, imgUrl, sizeScale) {
-        this.animal = animal
+    constructor(name, posX, posY, imgUrl, sizeScale) {
+        this.name = name
         this.posX = posX
         this.posY = posY
         this.imgUrl = imgUrl
@@ -21,6 +21,7 @@ class Animal {
         )
         this.setWidthAndHeight()
 
+        //Poacher with animal collision
         if (
             //RECT TO RECT COLLISION
             // collideRectRect(
@@ -45,9 +46,22 @@ class Animal {
         ) {
             this.dead = true
         }
+
+        this.aniamlBood()
     }
     setWidthAndHeight() {
         this.width = this.animalImg.width / this.sizeScale
         this.height = this.animalImg.height / this.sizeScale
+    }
+    aniamlBood() {
+        if (this.dead === true) {
+            fill('rgba(255,0,0, 0.3)')
+            ellipse(
+                this.posX + this.width / 2,
+                this.posY + this.height / 2,
+                this.width + 20,
+                this.height + 20
+            )
+        }
     }
 }
