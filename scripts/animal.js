@@ -33,9 +33,9 @@ class Animal {
                 game.poacherArr.forEach(el => el.posY),
                 game.poacherArr.forEach(el => el.width),
                 game.poacherArr.forEach(el => el.height)
-            ) &&
-            game.poacherArr.forEach(el => el.inJail) === false
+            )
         ) {
+            console.log('HELLO')
             this.dead = true
         }
         this.aniamlBood()

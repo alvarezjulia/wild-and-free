@@ -21,7 +21,7 @@ class Poacher {
                 this.poacherImg.width / 10,
                 this.poacherImg.height / 10
             )
-            this.setScore()
+            // this.setScore()
         }
 
         //Set canvas boundaries
@@ -71,13 +71,15 @@ class Poacher {
             )
         ) {
             this.inJail = true
-            game.poachersInJail++
+            // game.poachersInJail++
+            // this.inJailCount++
         }
     }
 
-    setScore() {
-        document.querySelector('h1').innerHTML = `POACHERS IN JAIL: ${game.poachersInJail}`
-    }
+    // setScore() {
+    //     if (this.inJail === true) game.poachersInJail++
+    //     document.querySelector('h1').innerHTML = `POACHERS IN JAIL: ${game.poachersInJail}`
+    // }
 }
 
 const randomizer = x => {
