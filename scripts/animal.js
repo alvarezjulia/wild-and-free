@@ -12,6 +12,24 @@ class Animal {
         this.animalImg = loadImage(this.imgUrl)
     }
     draw() {
+        for (let i = 0; i < game.poacherArr.length; i++) {
+            if (
+                collideRectRect(
+                    this.posX + this.width / 2,
+                    this.posY + this.height / 2,
+                    this.width - 15,
+                    this.height - 15,
+                    game.poacherArr[i].posX,
+                    game.poacherArr[i].posY,
+                    79.2,
+                    61.2
+                ) &&
+                !game.poacherArr[i].inJail
+            ) {
+                this.dead = true
+            }
+        }
+
         image(
             this.animalImg,
             this.posX,
