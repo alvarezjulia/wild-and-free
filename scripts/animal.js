@@ -22,19 +22,28 @@ class Animal {
         this.setWidthAndHeight()
 
         if (
-            collideRectRect(
+            //RECT TO RECT COLLISION
+            // collideRectRect(
+            //     this.posX,
+            //     this.posY,
+            //     this.width,
+            //     this.height,
+            //     game.poacher.posX,
+            //     game.poacher.posY,
+            //     game.poacher.width,
+            //     game.poacher.height
+            // )
+            //CIRCLE TO CIRCLE COLLISION
+            collideCircleCircle(
                 this.posX,
                 this.posY,
                 this.width,
-                this.height,
                 game.poacher.posX,
                 game.poacher.posY,
-                game.poacher.width,
-                game.poacher.height
+                game.poacher.width
             )
         ) {
             this.dead = true
-            console.log(this.dead)
         }
     }
     setWidthAndHeight() {
