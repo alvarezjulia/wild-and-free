@@ -12,16 +12,27 @@ class Animal {
         this.animalImg = loadImage(this.imgUrl)
     }
     draw() {
+        //Draw animal image on the canvas
+        image(
+            this.animalImg,
+            this.posX,
+            this.posY,
+            this.animalImg.width / this.sizeScale,
+            this.animalImg.height / this.sizeScale
+        )
+
+        //Poacher with animal collision
+        //& poacher not in jail
         for (let i = 0; i < game.poacherArr.length; i++) {
             if (
                 collideRectRect(
-                    this.posX + this.width / 2,
-                    this.posY + this.height / 2,
+                    this.posX + 5,
+                    this.posY + 5,
                     this.width - 15,
                     this.height - 15,
-                    game.poacherArr[i].posX,
+                    game.poacherArr[i].posX + 20,
                     game.poacherArr[i].posY,
-                    79.2,
+                    40,
                     61.2
                 ) &&
                 !game.poacherArr[i].inJail
@@ -30,32 +41,7 @@ class Animal {
             }
         }
 
-        image(
-            this.animalImg,
-            this.posX,
-            this.posY,
-            this.animalImg.width / this.sizeScale,
-            this.animalImg.height / this.sizeScale
-        )
         this.setWidthAndHeight()
-
-        //Poacher with animal collision
-        //& poacher not in jail
-        if (
-            collideRectRect(
-                this.posX + this.width / 2,
-                this.posY + this.height / 2,
-                this.width - 15,
-                this.height - 15,
-                game.poacherArr.forEach(el => el.posX),
-                game.poacherArr.forEach(el => el.posY),
-                game.poacherArr.forEach(el => el.width),
-                game.poacherArr.forEach(el => el.height)
-            )
-        ) {
-            console.log('HELLO')
-            this.dead = true
-        }
         this.aniamlBood()
     }
     setWidthAndHeight() {

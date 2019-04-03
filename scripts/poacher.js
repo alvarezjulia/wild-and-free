@@ -20,7 +20,6 @@ class Poacher {
                 this.poacherImg.width / 10,
                 this.poacherImg.height / 10
             )
-            this.setScore()
         }
 
         //Set canvas boundaries
@@ -59,23 +58,18 @@ class Poacher {
     goToJail() {
         if (
             collideRectRect(
-                this.posX + this.width / 2,
-                this.posY + this.height / 2,
-                this.width - 15,
-                this.height - 15,
-                game.savior.saviorX,
+                this.posX + 20,
+                this.posY,
+                40,
+                this.height,
+                game.savior.saviorX - 28,
                 game.savior.saviorY,
                 game.savior.width,
                 game.savior.height
             )
         ) {
             this.inJail = true
-            game.poachersInJail++
         }
-    }
-
-    setScore() {
-        document.querySelector('h1').innerHTML = `POACHERS IN JAIL: ${game.poachersInJail}`
     }
 }
 
