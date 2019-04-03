@@ -8,3 +8,9 @@ function draw() {
     clear()
     game.draw()
 }
+
+function keyPressed() {
+    if (keyCode === ENTER) {
+        game.poacher.goToJail()
+    }
+}

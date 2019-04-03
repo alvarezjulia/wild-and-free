@@ -23,25 +23,15 @@ class Animal {
 
         //Poacher with animal collision
         if (
-            //RECT TO RECT COLLISION
-            // collideRectRect(
-            //     this.posX,
-            //     this.posY,
-            //     this.width,
-            //     this.height,
-            //     game.poacher.posX,
-            //     game.poacher.posY,
-            //     game.poacher.width,
-            //     game.poacher.height
-            // )
-            //CIRCLE TO CIRCLE COLLISION
-            collideCircleCircle(
-                this.posX,
-                this.posY,
-                this.width,
+            collideRectRect(
+                this.posX + this.width / 2,
+                this.posY + this.height / 2,
+                this.width - 15,
+                this.height - 15,
                 game.poacher.posX,
                 game.poacher.posY,
-                game.poacher.width
+                game.poacher.width,
+                game.poacher.height
             )
         ) {
             this.dead = true

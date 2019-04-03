@@ -45,4 +45,5 @@ class Savior {
             this.saviorX -= -MOVE * Math.sin(this.angle)
         }
     }
+    poacherInJail() {}
 }

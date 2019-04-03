@@ -4,6 +4,7 @@ class Poacher {
         this.posY = randomizer(GAME_HEIGHT)
         this.poacherImg
         this.startPathing()
+        // this.inJail = false
     }
     setup() {
         this.poacherImg = loadImage('./../assets/Poacher.jpg')
@@ -18,6 +19,10 @@ class Poacher {
             this.poacherImg.height / 10
         )
         this.setWidthAndHeight()
+
+        // if (this.inJail === true) {
+        //     remove(this.poacherImg)
+        // }
     }
     setWidthAndHeight() {
         this.width = this.poacherImg.width / 10
@@ -39,6 +44,12 @@ class Poacher {
             : rand < 0.75
             ? (this.posY += randomNumber(3, 6))
             : (this.posY -= randomNumber(3, 6))
+    }
+
+    goToJail() {
+        // this.inJail = true
+        this.posX = 1000000
+        this.posY = 1000000
     }
 }
 
