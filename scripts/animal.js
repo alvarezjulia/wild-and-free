@@ -22,21 +22,22 @@ class Animal {
         this.setWidthAndHeight()
 
         //Poacher with animal collision
+        //& poacher not in jail
         if (
             collideRectRect(
                 this.posX + this.width / 2,
                 this.posY + this.height / 2,
                 this.width - 15,
                 this.height - 15,
-                game.poacher.posX,
-                game.poacher.posY,
-                game.poacher.width,
-                game.poacher.height
-            )
+                game.poacherArr.forEach(el => el.posX),
+                game.poacherArr.forEach(el => el.posY),
+                game.poacherArr.forEach(el => el.width),
+                game.poacherArr.forEach(el => el.height)
+            ) &&
+            game.poacherArr.forEach(el => el.inJail) === false
         ) {
             this.dead = true
         }
-
         this.aniamlBood()
     }
     setWidthAndHeight() {

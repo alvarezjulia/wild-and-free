@@ -11,6 +11,6 @@ function draw() {
 
 function keyPressed() {
     if (keyCode === ENTER) {
-        game.poacher.goToJail()
+        game.poacherArr.forEach(el => el.goToJail())
     }
 }

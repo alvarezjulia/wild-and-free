@@ -5,6 +5,7 @@ class Poacher {
         this.poacherImg
         this.startPathing()
         this.inJail = false
+        // this.inJailCount = 0
     }
     setup() {
         this.poacherImg = loadImage('./../assets/Poacher.jpg')
@@ -20,6 +21,18 @@ class Poacher {
                 this.poacherImg.width / 10,
                 this.poacherImg.height / 10
             )
+            this.setScore()
+        }
+
+        //Set canvas boundaries
+        if (this.posX >= GAME_WIDTH * 0.9) {
+            this.posX = GAME_WIDTH * 0.89
+        } else if (this.posY >= GAME_HEIGHT * 0.9) {
+            this.posY = GAME_HEIGHT * 0.89
+        } else if (this.posY < GAME_HEIGHT * 0.02) {
+            this.posY = GAME_HEIGHT * 0.03
+        } else if (this.posX < GAME_WIDTH * 0.02) {
+            this.posX = GAME_WIDTH * 0.03
         }
     }
     setWidthAndHeight() {
@@ -58,7 +71,12 @@ class Poacher {
             )
         ) {
             this.inJail = true
+            game.poachersInJail++
         }
+    }
+
+    setScore() {
+        document.querySelector('h1').innerHTML = `POACHERS IN JAIL: ${game.poachersInJail}`
     }
 }
 
