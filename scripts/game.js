@@ -1,14 +1,13 @@
 let bg
 class Game {
-    constructor() {
-        this.gameOver = false
-    }
+    constructor() {}
 
     setup() {
         this.savior = new Savior()
+
         this.animal = []
         this.canMove = []
-        this.poacherArr = Array.from({ length: 5 }).map(x => new Poacher())
+        this.poacherArr = Array.from({ length: 1 }).map(x => new Poacher())
         this.arrInJail
         this.arrDeadAnimal
 
@@ -29,14 +28,21 @@ class Game {
 
     restart() {
         clearInterval(this.timeout)
+
         this.savior = new Savior()
+
+        this.gameOver = false
+        this.youWon = false
         this.animal = []
         this.canMove = []
+
         this.poacherArr = Array.from({ length: 20 }).map(x => new Poacher())
         this.arrInJail
         this.arrDeadAnimal
         bg = loadImage('./../assets/background.jpg')
         this.poacherArr.forEach(el => el.setup())
+
+        //Set timeout for animals to appear on screen
         this.timeout = setTimeout(() => {
             this.animal = ANIMALS.map(
                 animal =>
@@ -58,30 +64,61 @@ class Game {
         this.arrInJail = game.poacherArr.filter(el => el.inJail)
         this.arrDeadAnimal = game.animal.filter(el => el.dead)
 
-        if (transparency === maxTransparency) this.gameOver = true
-
-        if (this.gameOver) {
-            textSize(100)
-            text('Game Over', GAME_WIDTH / 2, GAME_HEIGHT / 2)
-        }
-
         //Black background fading
         fill(0, transparency)
         rect(0, 0, GAME_WIDTH, GAME_HEIGHT)
         transparency = transparency + 1
 
-        //Draw saviors
+        //If complete darkness => game over displayed
+        if (transparency === maxTransparency && this.arrInJail.length !== this.poacherArr.length) {
+            this.gameOver = true
+        }
+
+        if (this.gameOver) {
+            clear()
+            background(0)
+            textSize(100)
+            fill('rgb(33, 139, 22)')
+            textFont('Poppins')
+            text('GAME OVER', GAME_WIDTH / 7, GAME_HEIGHT / 2)
+        }
+
+        //Change inner HTML to set score and dead counter
+        if (this.gameOver) {
+            document.querySelector('.container').innerHTML = '<h1>You lost!</h1>'
+        } else if (!this.youWon && !this.gameOver) {
+            this.setScore()
+            this.setDeadCounter()
+        } else if (this.youWon) {
+            document.querySelector('.container').innerHTML = '<h1>You won!</h1>'
+            clear()
+            background(0)
+            textSize(20)
+            fill('rgb(33, 139, 22)')
+            textFont('Poppins')
+            text('You saved the animals! YAY!', GAME_WIDTH / 7, GAME_HEIGHT / 2)
+        }
+
+        //If all poachers are in jail => you won displayed
+        if (this.arrInJail.length == this.poacherArr.length) this.youWon = true
+
+        //Draw savior
         this.savior.draw()
 
         //MOVE CURSORS
+
+        //When pressing left arrow - left rotation
         if (keyIsDown(LEFT_ARROW)) {
             this.savior.angle -= 15 / (180 * Math.PI)
         }
 
+        //When pressing right arrow - right rotation
         if (keyIsDown(RIGHT_ARROW)) {
             this.savior.angle += 15 / (180 * Math.PI)
         }
 
+        //When pressing up arrow - vector translation forward
+        //+ prevention to run over animals
         if (keyIsDown(UP_ARROW)) {
             this.animal.forEach(animal => {
                 this.canMove.push(
@@ -103,6 +140,8 @@ class Game {
             this.canMove = []
         }
 
+        //When pressing down arrow - vector translation backward
+        //+ prevention to run over animals
         if (keyIsDown(DOWN_ARROW)) {
             this.animal.forEach(animal => {
                 this.canMove.push(
@@ -123,9 +162,6 @@ class Game {
             }
             this.canMove = []
         }
-
-        this.setScore()
-        this.setDeadCounter()
     }
 
     setScore() {

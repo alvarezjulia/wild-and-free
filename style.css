@@ -22,7 +22,9 @@ h2 {
 
 .header button {
     background-color: #218b16;
-    width: 150px;
+    width: 140px;
+    height: 75px;
+    margin:10px ;
     font-size: 30px;
     border-color: black;
 }
@@ -30,8 +32,10 @@ h2 {
 .header {
     display: flex;
     justify-content: center;
+    align-items: center;
     background-color: rgb(139, 117, 117);
     width: 800px;
+    height: 85px;
 }
 .container {
     margin: 0 auto;
