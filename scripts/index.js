@@ -15,7 +15,7 @@ function draw() {
 }
 
 function keyPressed() {
-    if (keyCode === ENTER) {
+    if (keyCode === SHIFT) {
         game.poacherArr.forEach(el => el.goToJail())
     }
 }
@@ -24,3 +24,9 @@ document.querySelector('button').addEventListener('click', () => {
     gameStart = !gameStart
     game.restart()
 })
+
+// function preload() {
+//     mySound = loadSound('/game-over.wav')
+//     mySecondSound = loadSound('/arc-hit.wav')
+//     myBackgroundSound = loadSound('/background-sound.mp3')
+// }

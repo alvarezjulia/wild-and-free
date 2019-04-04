@@ -24,7 +24,7 @@ class Game {
                     new Animal(animal.name, animal.posX, animal.posY, animal.imgUrl, animal.sizeScale)
             )
             this.animal.forEach(el => el.setup())
-        }, 1500)
+        }, 2000)
     }
 
     restart() {
@@ -52,7 +52,7 @@ class Game {
                     new Animal(animal.name, animal.posX, animal.posY, animal.imgUrl, animal.sizeScale)
             )
             this.animal.forEach(el => el.setup())
-        }, 1500)
+        }, 2000)
     }
 
     draw() {
@@ -70,14 +70,15 @@ class Game {
         //Black background fading
         fill(0, transparency)
         rect(0, 0, GAME_WIDTH, GAME_HEIGHT)
-        transparency = transparency + 0.5
+        transparency = transparency + 0.8
 
         //If complete darkness => game over displayed
-        if (transparency === maxTransparency && this.arrInJail.length !== this.poacherArr.length) {
+        if (transparency > maxTransparency && this.arrInJail.length !== this.poacherArr.length) {
             this.gameOver = true
         }
 
         if (this.gameOver) {
+            // mySecondSound.play()
             clear()
             background(0)
             textSize(100)
@@ -90,8 +91,9 @@ class Game {
         if (this.gameOver) {
             document.querySelector('.container').innerHTML = '<h1>You lost!</h1>'
         } else if (!this.youWon && !this.gameOver) {
-            this.setScore()
-            this.setDeadCounter()
+            document.querySelector('.container').innerHTML = `<h1>POACHERS IN JAIL : ${
+                this.arrInJail.length
+            }</h1><h2>DEAD ANIMALS : ${this.arrDeadAnimal.length}</h2>`
         } else if (this.youWon) {
             document.querySelector('.container').innerHTML = '<h1>You won!</h1>'
             clear()
@@ -165,12 +167,5 @@ class Game {
             }
             this.canMove = []
         }
-    }
-
-    setScore() {
-        document.querySelector('h1').innerHTML = `POACHERS IN JAIL : ${this.arrInJail.length}`
-    }
-    setDeadCounter() {
-        // document.querySelector('h2').innerHTML = `DEAD ANIMALS : ${this.arrDeadAnimal.length}`
     }
 }
