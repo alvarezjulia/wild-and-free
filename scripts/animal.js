@@ -22,23 +22,6 @@ class Animal {
         )
         this.setWidthAndHeight()
 
-        //Savior with animal collision
-        if (
-            collidePointRect(
-                game.savior.saviorX,
-                game.savior.saviorY,
-                this.posX,
-                this.posY,
-                this.width,
-                this.height
-            )
-        ) {
-            // let playerX = game.savior.saviorX
-            // let playerY = game.savior.saviorY
-            // game.savior.saviorX = playerX
-            // game.savior.saviorY = playerY
-        }
-
         //Poacher with animal collision
         //& poacher not in jail
         for (let i = 0; i < game.poacherArr.length; i++) {
