@@ -1,6 +1,8 @@
 let bg
 class Game {
-    constructor() {}
+    constructor() {
+        this.gameOver = false
+    }
 
     setup() {
         this.savior = new Savior()
@@ -9,10 +11,13 @@ class Game {
         this.poacherArr = Array.from({ length: 5 }).map(x => new Poacher())
         this.arrInJail
         this.arrDeadAnimal
+
         bg = loadImage('./../assets/background.jpg')
         createCanvas(GAME_WIDTH, GAME_HEIGHT)
+
         this.poacherArr.forEach(el => el.setup())
         this.savior.setup()
+
         this.timeout = setTimeout(() => {
             this.animal = ANIMALS.map(
                 animal =>
@@ -42,25 +47,33 @@ class Game {
     }
 
     draw() {
+        //Picture wild background
         background(bg)
+
+        //Draw animals and poachers
         this.animal.forEach(el => el.draw())
         this.poacherArr.forEach(el => el.draw())
 
+        //Dead animals + Poachers in jail
         this.arrInJail = game.poacherArr.filter(el => el.inJail)
-
         this.arrDeadAnimal = game.animal.filter(el => el.dead)
 
-        // fill(0, transparency)
-        // rect(0, 0, GAME_WIDTH, GAME_HEIGHT)
-        // transparency = transparency + 1
+        if (transparency === maxTransparency) this.gameOver = true
 
-        // if (transparency === maxTransparency) console.log('Game over')
+        if (this.gameOver) {
+            textSize(100)
+            text('Game Over', GAME_WIDTH / 2, GAME_HEIGHT / 2)
+        }
 
+        //Black background fading
+        fill(0, transparency)
+        rect(0, 0, GAME_WIDTH, GAME_HEIGHT)
+        transparency = transparency + 1
+
+        //Draw saviors
         this.savior.draw()
 
-        this.setScore()
-        this.setDeadCounter()
-
+        //MOVE CURSORS
         if (keyIsDown(LEFT_ARROW)) {
             this.savior.angle -= 15 / (180 * Math.PI)
         }
@@ -110,6 +123,9 @@ class Game {
             }
             this.canMove = []
         }
+
+        this.setScore()
+        this.setDeadCounter()
     }
 
     setScore() {

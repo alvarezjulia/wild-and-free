@@ -12,7 +12,6 @@ class Savior {
     }
 
     draw() {
-        // push()
         fill('rgba(240,243,46, 0.80)')
         noStroke()
         translate(this.saviorX, this.saviorY)
@@ -20,7 +19,6 @@ class Savior {
         triangle(-28, 75, 0, 0, 28, 75)
         arc(0, 75, 56, 56, 0, PI)
         image(this.saviorImg, -30, -25, this.saviorImg.width / 5, this.saviorImg.height / 5)
-        // pop()
 
         //Set canvas boundaries
         if (this.saviorX >= GAME_WIDTH * 0.96) {
