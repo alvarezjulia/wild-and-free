@@ -4,18 +4,19 @@ class Game {
 
     setup() {
         this.savior = new Savior()
+        this.savior.setup()
 
         this.animal = []
         this.canMove = []
-        this.poacherArr = Array.from({ length: 1 }).map(x => new Poacher())
+
+        this.poacherArr = Array.from({ length: 5 }).map(x => new Poacher())
+        this.poacherArr.forEach(el => el.setup())
+
         this.arrInJail
-        this.arrDeadAnimal
+        this.arrDeadAnimal = []
 
         bg = loadImage('./../assets/background.jpg')
         createCanvas(GAME_WIDTH, GAME_HEIGHT)
-
-        this.poacherArr.forEach(el => el.setup())
-        this.savior.setup()
 
         this.timeout = setTimeout(() => {
             this.animal = ANIMALS.map(
@@ -23,22 +24,24 @@ class Game {
                     new Animal(animal.name, animal.posX, animal.posY, animal.imgUrl, animal.sizeScale)
             )
             this.animal.forEach(el => el.setup())
-        }, 5000)
+        }, 1500)
     }
 
     restart() {
         clearInterval(this.timeout)
-
+        transparency = 0
         this.savior = new Savior()
+        this.savior.setup()
 
         this.gameOver = false
         this.youWon = false
+
         this.animal = []
         this.canMove = []
 
-        this.poacherArr = Array.from({ length: 20 }).map(x => new Poacher())
+        this.poacherArr = Array.from({ length: 5 }).map(x => new Poacher())
         this.arrInJail
-        this.arrDeadAnimal
+        this.arrDeadAnimal = []
         bg = loadImage('./../assets/background.jpg')
         this.poacherArr.forEach(el => el.setup())
 
@@ -49,7 +52,7 @@ class Game {
                     new Animal(animal.name, animal.posX, animal.posY, animal.imgUrl, animal.sizeScale)
             )
             this.animal.forEach(el => el.setup())
-        }, 3000)
+        }, 1500)
     }
 
     draw() {
@@ -67,7 +70,7 @@ class Game {
         //Black background fading
         fill(0, transparency)
         rect(0, 0, GAME_WIDTH, GAME_HEIGHT)
-        transparency = transparency + 1
+        transparency = transparency + 0.5
 
         //If complete darkness => game over displayed
         if (transparency === maxTransparency && this.arrInJail.length !== this.poacherArr.length) {
@@ -96,7 +99,7 @@ class Game {
             textSize(20)
             fill('rgb(33, 139, 22)')
             textFont('Poppins')
-            text('You saved the animals! YAY!', GAME_WIDTH / 7, GAME_HEIGHT / 2)
+            text('All poachers are in jail! YAY!', GAME_WIDTH / 3, GAME_HEIGHT / 2)
         }
 
         //If all poachers are in jail => you won displayed
@@ -168,6 +171,6 @@ class Game {
         document.querySelector('h1').innerHTML = `POACHERS IN JAIL : ${this.arrInJail.length}`
     }
     setDeadCounter() {
-        document.querySelector('h2').innerHTML = `DEAD ANIMALS : ${this.arrDeadAnimal.length}`
+        // document.querySelector('h2').innerHTML = `DEAD ANIMALS : ${this.arrDeadAnimal.length}`
     }
 }

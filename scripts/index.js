@@ -9,7 +9,9 @@ function setup() {
 
 function draw() {
     clear()
+    // if (this.gameStart) {
     game.draw()
+    // }
 }
 
 function keyPressed() {
