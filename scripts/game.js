@@ -16,6 +16,7 @@ class Game {
         this.arrDeadAnimal = []
 
         this.soundHasPlayed = false
+        this.secondSoundHasPlayed = false
 
         bg = loadImage('./assets/background.jpg')
         createCanvas(GAME_WIDTH, GAME_HEIGHT)
@@ -82,9 +83,9 @@ class Game {
 
         if (this.gameOver) {
             // if the sound hasnt played yet => play the sound
-            if (!this.soundHasPlayed) {
+            if (!this.secondSoundHasPlayed) {
                 mySecondSound.play()
-                this.soundHasPlayed = true
+                this.secondSoundHasPlayed = true
                 setTimeout(() => {
                     mySecondSound.stop()
                 }, 2500)
@@ -106,6 +107,11 @@ class Game {
                 this.arrInJail.length
             }</h1><h2>DEAD ANIMALS : ${this.arrDeadAnimal.length}</h2>`
         } else if (this.youWon) {
+            if (!this.soundHasPlayed) {
+                mySound.play()
+                this.soundHasPlayed = true
+            }
+
             document.querySelector('.container').innerHTML = '<h1>You won!</h1>'
             clear()
             background(0)

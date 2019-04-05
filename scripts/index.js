@@ -24,5 +24,6 @@ document.querySelector('button').addEventListener('click', () => {
 })
 
 function preload() {
+    mySound = loadSound('./assets/youwin.wav')
     mySecondSound = loadSound('./assets/gameover.mp3')
 }
