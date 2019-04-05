@@ -8,7 +8,7 @@ class Savior {
     }
 
     setup() {
-        this.saviorImg = loadImage('./../assets/flashlight.jpg')
+        this.saviorImg = loadImage('./assets/flashlight.jpg')
     }
 
     draw() {

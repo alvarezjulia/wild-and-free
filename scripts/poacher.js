@@ -7,7 +7,7 @@ class Poacher {
         this.inJail = false
     }
     setup() {
-        this.poacherImg = loadImage('./../assets/poacher.jpg')
+        this.poacherImg = loadImage('./assets/poacher.jpg')
     }
 
     draw() {

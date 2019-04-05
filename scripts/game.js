@@ -17,7 +17,7 @@ class Game {
 
         this.soundHasPlayed = false
 
-        bg = loadImage('./../assets/background.jpg')
+        bg = loadImage('./assets/background.jpg')
         createCanvas(GAME_WIDTH, GAME_HEIGHT)
 
         this.timeout = setTimeout(() => {
@@ -45,7 +45,7 @@ class Game {
         this.poacherArr = Array.from({ length: 5 }).map(x => new Poacher())
         this.arrInJail
         this.arrDeadAnimal = []
-        bg = loadImage('./../assets/background.jpg')
+        bg = loadImage('./assets/background.jpg')
         this.poacherArr.forEach(el => el.setup())
 
         //Set timeout for animals to appear on screen
@@ -73,7 +73,7 @@ class Game {
         //Black background fading
         fill(0, transparency)
         rect(0, 0, GAME_WIDTH, GAME_HEIGHT)
-        transparency = transparency + 1
+        transparency = transparency + 1.2
 
         //If complete darkness => game over displayed
         if (transparency > maxTransparency && this.arrInJail.length !== this.poacherArr.length) {
