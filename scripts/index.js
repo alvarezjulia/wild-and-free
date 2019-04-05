@@ -9,9 +9,7 @@ function setup() {
 
 function draw() {
     clear()
-    // if (this.gameStart) {
     game.draw()
-    // }
 }
 
 function keyPressed() {
@@ -25,8 +23,6 @@ document.querySelector('button').addEventListener('click', () => {
     game.restart()
 })
 
-// function preload() {
-//     mySound = loadSound('/game-over.wav')
-//     mySecondSound = loadSound('/arc-hit.wav')
-//     myBackgroundSound = loadSound('/background-sound.mp3')
-// }
+function preload() {
+    mySecondSound = loadSound('./assets/arc-hit.wav')
+}
