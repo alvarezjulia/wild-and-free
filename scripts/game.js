@@ -17,6 +17,7 @@ class Game {
 
         this.soundHasPlayed = false
         this.secondSoundHasPlayed = false
+        this.backgroundSoundHasPlayed = false
 
         bg = loadImage('./assets/background.jpg')
         createCanvas(GAME_WIDTH, GAME_HEIGHT)
@@ -39,6 +40,10 @@ class Game {
 
         this.gameOver = false
         this.youWon = false
+
+        this.soundHasPlayed = false
+        this.secondSoundHasPlayed = false
+        this.backgroundSoundHasPlayed = false
 
         this.animal = []
         this.canMove = []
@@ -63,6 +68,11 @@ class Game {
         //Picture wild background
         background(bg)
 
+        if (!this.backgroundSoundHasPlayed) {
+            backgroundSound.play()
+            this.backgroundSoundHasPlayed = true
+        }
+
         //Draw animals and poachers
         this.animal.forEach(el => el.draw())
         this.poacherArr.forEach(el => el.draw())
@@ -85,6 +95,7 @@ class Game {
             // if the sound hasnt played yet => play the sound
             if (!this.secondSoundHasPlayed) {
                 mySecondSound.play()
+                backgroundSound.stop()
                 this.secondSoundHasPlayed = true
                 setTimeout(() => {
                     mySecondSound.stop()
@@ -109,6 +120,7 @@ class Game {
         } else if (this.youWon) {
             if (!this.soundHasPlayed) {
                 mySound.play()
+                backgroundSound.stop()
                 this.soundHasPlayed = true
             }
 
