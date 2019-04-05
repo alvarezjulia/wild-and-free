@@ -42,3 +42,30 @@ h2 {
     /* Translate button px */
     transform: translate(-75px);
 }
+
+.landing {
+    font-family: 'Poppins';
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 20vh;
+}
+
+.landing-container {
+    background-color: #fff;
+    padding: 100px;
+}
+
+.landing h1 {
+    margin-bottom: 50px;
+    font-family: fantasy;
+    font-size: 100px;
+}
+.landing a {
+    text-decoration: none;
+    color: #218b16;
+    border: solid #218b16;
+    padding: 5px;
+    background-color: rgb(238, 235, 235);
+    font-size: 20px;
+}

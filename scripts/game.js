@@ -15,6 +15,8 @@ class Game {
         this.arrInJail
         this.arrDeadAnimal = []
 
+        this.soundHasPlayed = false
+
         bg = loadImage('./../assets/background.jpg')
         createCanvas(GAME_WIDTH, GAME_HEIGHT)
 
@@ -27,6 +29,7 @@ class Game {
         }, 2000)
     }
 
+    //Restart function accessed when restart button is pressed
     restart() {
         clearInterval(this.timeout)
         transparency = 0
@@ -70,7 +73,7 @@ class Game {
         //Black background fading
         fill(0, transparency)
         rect(0, 0, GAME_WIDTH, GAME_HEIGHT)
-        transparency = transparency + 0.8
+        transparency = transparency + 1
 
         //If complete darkness => game over displayed
         if (transparency > maxTransparency && this.arrInJail.length !== this.poacherArr.length) {
@@ -78,7 +81,12 @@ class Game {
         }
 
         if (this.gameOver) {
-            // mySecondSound.play()
+            // if the sound hasnt played yet => play the sound
+            if (!this.soundHasPlayed) {
+                mySecondSound.play()
+                this.soundHasPlayed = true
+            }
+
             clear()
             background(0)
             textSize(100)
