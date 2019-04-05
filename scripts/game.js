@@ -85,6 +85,9 @@ class Game {
             if (!this.soundHasPlayed) {
                 mySecondSound.play()
                 this.soundHasPlayed = true
+                setTimeout(() => {
+                    mySecondSound.stop()
+                }, 2500)
             }
 
             clear()

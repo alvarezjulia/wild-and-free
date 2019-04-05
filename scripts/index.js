@@ -24,5 +24,5 @@ document.querySelector('button').addEventListener('click', () => {
 })
 
 function preload() {
-    mySecondSound = loadSound('./assets/arc-hit.wav')
+    mySecondSound = loadSound('./assets/gameover.mp3')
 }
